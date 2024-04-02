@@ -1,0 +1,12 @@
+import random
+import requests
+prompt = input("dsecribe your image:")
+w = input("width[1080]:")or 1080
+h = input("heght[1080]:")or 1080
+seed = random.randint(1,1000)
+base = "https://image.pollinations.ai/prompt"
+url = f"{base}/{prompt}?seed={seed}&width={w}&height={h}"
+
+res = requests.get(url)
+with open('img.jp','wb') as f:
+    f.write(res.content)
